@@ -1,6 +1,6 @@
 <h1 align="center" id="title">📝 TODO List</h1>
 
-![project-image](https://socialify.git.ci/Josepch1/todo-list/image?description=1&font=Inter&language=1&name=1&owner=1&pattern=Solid&theme=Light)
+![project-image](https://socialify.git.ci/Josepch1/todo-list/image?description=1&descriptionEditable=TODO%20List%20API%20using%20Spring%20Boot&language=1&name=1&owner=1&pattern=Solid&theme=Light)
 
 <p align="center"><img src="https://img.shields.io/badge/Status-Concluido-28a745?style=for-the-badge" alt="shields"><img src="https://img.shields.io/badge/Tipo-Backend-8257E5?style=for-the-badge" alt="shields"></p>
 
