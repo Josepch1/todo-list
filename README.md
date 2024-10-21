@@ -1,102 +1,114 @@
-# TODO List Project
+# 📝 TODO List
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Josepch1/todo-list?style=for-the-badge)
+![Concluído](https://img.shields.io/badge/Status-Concluido-28a745?style=for-the-badge)
+![Backend](https://img.shields.io/badge/Tipo-Backend-8257E5?style=for-the-badge)
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+> API (CRUD) para gerenciar tarefas.
 
-### Ajustes e melhorias
+## 🚀 Tecnologias
 
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas para as seguintes tarefas:
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- [Spring MVC](https://docs.spring.io/spring-framework/reference/web/webmvc.html)
+- [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
+- [SpringDoc OpenAPI 3](https://springdoc.org/v2/#spring-webflux-support)
+- [PostgreSQL](https://www.postgresql.org/download/)
 
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
-- [ ] Tarefa 4
-- [ ] Tarefa 5
+## 🛠️ Práticas Adotadas
 
-## 💻 Pré-requisitos
+- SOLID, DRY, YAGNI, KISS
+- API REST
+- Consultas com Spring Data JPA
+- Injeção de Dependências
+- Tratamento de respostas de erro
+- Geração automática do Swagger com a OpenAPI 3
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
+## 💻 Como Executar
 
-- Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
-- Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
-- Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
+- Clonar o repositório:
 
-## 🚀 Instalando <nome_do_projeto>
-
-Para instalar o <nome_do_projeto>, siga estas etapas:
-
-Linux e macOS:
-
-```
-<comando_de_instalação>
+```bash
+git clone https://github.com/Josepch1/todo-list.git
 ```
 
-Windows:
+- Construir o projeto:
 
-```
-<comando_de_instalação>
-```
-
-## ☕ Usando <nome_do_projeto>
-
-Para usar <nome_do_projeto>, siga estas etapas:
-
-```
-<exemplo_de_uso>
+```bash
+./mvnw clean package
 ```
 
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!
+- Executar a aplicação:
 
-## 📫 Contribuindo para <nome_do_projeto>
+```bash
+java -jar target/todolist-0.0.1-SNAPSHOT.jar
+```
 
-Para contribuir com <nome_do_projeto>, siga estas etapas:
+### A API poderá ser acessada em
+  
+- Requisições HTTP: [http://localhost/](http://localhost/)
+- O Swagger estará disponível em: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
-1. Bifurque este repositório.
-2. Crie um branch: `git checkout -b <nome_branch>`.
-3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
-5. Crie a solicitação de pull.
+## 🔥 Endpoints da API
 
-Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+> Para as requisições HTTP, utilizamos CLI do [HTTPIe](https://httpie.io/cli)
 
-## 🤝 Colaboradores
+- Criar Tarefa:
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+```bash
+http POST :8080/todos nome="Todo 1" descricao="Descrição 1" prioridade=1
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="#" title="defina o título do link">
-        <img src="https://avatars3.githubusercontent.com/u/31936044" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
-        <sub>
-          <b>Iuri Silva</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o título do link">
-        <img src="https://s2.glbimg.com/FUcw2usZfSTL6yCCGj3L3v3SpJ8=/smart/e.glbimg.com/og/ed/f/original/2019/04/25/zuckerberg_podcast.jpg" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
-        <sub>
-          <b>Mark Zuckerberg</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#" title="defina o título do link">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>Steve Jobs</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
+[
+  {
+    "descricao": "Descrição 1",
+    "id": 1,
+    "nome": "Todo 1",
+    "prioridade": 1,
+    "realizado": false
+  }
+]
+```
 
-## 😄 Seja um dos contribuidores
+- Listar Tarefas:
 
-Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
+```bash
+http GET :8080/todos
 
-## 📝 Licença
+[
+  {
+    "descricao": "Descrição 1",
+    "id": 1,
+    "nome": "Todo 1",
+    "prioridade": 1,
+    "realizado": false
+  }
+]
+```
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+- Atualizar Tarefa:
+
+```bash
+http PUT :8080/todos/1 nome="Todo 1 Atualizado" descricao="Descrição Atualizada" prioridade=2
+
+[
+  {
+    "descricao": "Descrição Atualizada",
+    "id": 1,
+    "nome": "Todo 1 Atualizado",
+    "prioridade": 2,
+    "realizado": false
+  }
+]
+```
+
+- Remover Tarefa:
+
+```bash
+http DELETE :8080/todos/1
+
+[]
+```
+
+## 📋 Funcionalidades
+
+- Adicionar, listar, atualizar e remover tarefas.
+- Atribuir prioridades às tarefas.
+- Marcar tarefas como realizadas ou pendentes.
