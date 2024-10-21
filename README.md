@@ -22,36 +22,84 @@
 - Tratamento de respostas de erro
 - Geração automática do Swagger com a OpenAPI 3
 
+## 💻 Pré-requisitos
+
+Antes de executar a aplicação, certifique-se de que você tenha:
+
+- Java JDK 23 ou superior
+- Maven instalado
+- Docker instalado (opcional, para PostgreSQL)
+
 ## 💻 Como Executar
 
-- Clonar o repositório:
+### 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/Josepch1/todo-list.git
 ```
 
-- Construir o projeto:
+### 2. Construir o projeto
 
 ```bash
 ./mvnw clean package
 ```
 
-- Executar a aplicação:
+### 3. Executar a aplicação
 
 ```bash
 java -jar target/todolist-0.0.1-SNAPSHOT.jar
 ```
 
 ### A API poderá ser acessada em
-  
+
 - Requisições HTTP: [http://localhost/](http://localhost/)
 - O Swagger estará disponível em: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+### 💾 Iniciar PostgreSQL com Docker
+
+Para executar o PostgreSQL em um contêiner Docker, siga os passos abaixo:
+
+#### 1. Executar o PostgreSQL em Docker
+
+```bash
+docker run --name todo-postgres -e POSTGRES_USER=todo_user -e POSTGRES_PASSWORD=todo_password -e POSTGRES_DB=todo_db -p 5432:5432 -d postgres
+```
+
+- `--name`: Define o nome do contêiner (neste caso, `todo-postgres`).
+- `-e POSTGRES_USER`: Configura o nome do usuário do banco de dados.
+- `-e POSTGRES_PASSWORD`: Define a senha do usuário.
+- `-e POSTGRES_DB`: Cria o banco de dados especificado ao iniciar o - contêiner.
+- `-p 5432:5432`: Expõe a porta 5432 para conexão local com o PostgreSQL.
+- `-d`: Executa o contêiner em modo "detached" (em segundo plano).
+
+#### 2. Verificar se o contêiner está rodando
+
+```bash
+docker ps
+```
+
+#### 3. Configurar a conexão da aplicação com o PostgreSQL
+
+Certifique-se de que o arquivo application.properties ou application.yml está configurado corretamente para se conectar ao banco de dados PostgreSQL. Aqui está um exemplo de configuração:
+
+```properties
+# Database
+spring.datasource.url=jdbc:postgresql://localhost:5432/todos
+spring.datasource.username=YOUR_USER
+spring.datasource.password=YOUR_PASSWORD
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+#Hibernate
+spring.jpa.hibernate.ddl-auto=update
+```
+
+Agora você está pronto para rodar a aplicação com o banco de dados PostgreSQL usando Docker!
 
 ## 🔥 Endpoints da API
 
 > Para as requisições HTTP, utilizamos CLI do [HTTPIe](https://httpie.io/cli)
 
-- Criar Tarefa:
+### Criar Tarefa
 
 ```bash
 http POST :8080/todos nome="Todo 1" descricao="Descrição 1" prioridade=1
@@ -67,7 +115,7 @@ http POST :8080/todos nome="Todo 1" descricao="Descrição 1" prioridade=1
 ]
 ```
 
-- Listar Tarefas:
+### Listar Tarefas
 
 ```bash
 http GET :8080/todos
@@ -83,7 +131,7 @@ http GET :8080/todos
 ]
 ```
 
-- Atualizar Tarefa:
+### Atualizar Tarefa
 
 ```bash
 http PUT :8080/todos/1 nome="Todo 1 Atualizado" descricao="Descrição Atualizada" prioridade=2
@@ -99,7 +147,7 @@ http PUT :8080/todos/1 nome="Todo 1 Atualizado" descricao="Descrição Atualizad
 ]
 ```
 
-- Remover Tarefa:
+### Remover Tarefa
 
 ```bash
 http DELETE :8080/todos/1
@@ -112,3 +160,7 @@ http DELETE :8080/todos/1
 - Adicionar, listar, atualizar e remover tarefas.
 - Atribuir prioridades às tarefas.
 - Marcar tarefas como realizadas ou pendentes.
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
