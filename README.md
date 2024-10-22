@@ -63,7 +63,7 @@ Para executar o PostgreSQL em um contêiner Docker, siga os passos abaixo:
 #### 1. Executar o PostgreSQL em Docker
 
 ```bash
-docker run --name todo-postgres -e POSTGRES_USER=todo_user -e POSTGRES_PASSWORD=todo_password -e POSTGRES_DB=todo_db -p 5432:5432 -d postgres
+docker run --name todo-postgres -e POSTGRES_USER=USERNAME -e POSTGRES_PASSWORD=PASSWORD -e POSTGRES_DB=todos -p 5432:5432 -d postgres
 ```
 
 - `--name`: Define o nome do contêiner (neste caso, `todo-postgres`).
