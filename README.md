@@ -103,15 +103,15 @@ Agora você está pronto para rodar a aplicação com o banco de dados PostgreSQ
 ### Criar Tarefa
 
 ```bash
-http POST :8080/todos nome="Todo 1" descricao="Descrição 1" prioridade=1
+http POST :8080/todos name="Todo 1" description="Descrição 1" priority=1
 
 [
   {
-    "descricao": "Descrição 1",
+    "description": "Descrição 1",
     "id": 1,
-    "nome": "Todo 1",
-    "prioridade": 1,
-    "realizado": false
+    "name": "Todo 1",
+    "priority": 1,
+    "completed": false
   }
 ]
 ```
@@ -123,11 +123,11 @@ http GET :8080/todos
 
 [
   {
-    "descricao": "Descrição 1",
+    "description": "Descrição 1",
     "id": 1,
-    "nome": "Todo 1",
-    "prioridade": 1,
-    "realizado": false
+    "name": "Todo 1",
+    "priority": 1,
+    "completed": false
   }
 ]
 ```
@@ -135,15 +135,15 @@ http GET :8080/todos
 ### Atualizar Tarefa
 
 ```bash
-http PUT :8080/todos/1 nome="Todo 1 Atualizado" descricao="Descrição Atualizada" prioridade=2
+http PUT :8080/todos/1 name="Todo 1 Atualizado" description="Descrição Atualizada" priority=2
 
 [
   {
-    "descricao": "Descrição Atualizada",
+    "description": "Descrição Atualizada",
     "id": 1,
-    "nome": "Todo 1 Atualizado",
-    "prioridade": 2,
-    "realizado": false
+    "name": "Todo 1 Atualizado",
+    "priority": 2,
+    "completed": false
   }
 ]
 ```
@@ -159,7 +159,7 @@ http DELETE :8080/todos/1
 ## 📋 Funcionalidades
 
 - Adicionar, listar, atualizar e remover tarefas.
-- Atribuir prioridades às tarefas.
+- Atribuir prioritys às tarefas.
 - Marcar tarefas como realizadas ou pendentes.
 
 ## 🤝 Contribuição
