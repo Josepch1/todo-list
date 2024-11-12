@@ -53,7 +53,7 @@ java -jar target/todolist-0.0.1-SNAPSHOT.jar
 
 ### A API poderá ser acessada em
 
-- Requisições HTTP: [http://localhost/](http://localhost/)
+- Requisições HTTP: [http://localhost:8080/](http://localhost:8080/)
 - O Swagger estará disponível em: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
 ### 💾 Iniciar PostgreSQL com Docker
