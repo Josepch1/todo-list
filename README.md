@@ -16,7 +16,6 @@
 
 ## 🛠️ Práticas Adotadas
 
-- SOLID, DRY, YAGNI, KISS
 - API REST
 - Consultas com Spring Data JPA
 - Injeção de Dependências
